@@ -10,9 +10,9 @@ router.get('/', async (req, res) => {
     res.status(200).json(allResources)
 })
 
-router.post('/', resourceIsUnique, async (req, res) => {   ///  fix this end point 
-    const something = await rm.insert(req.body)
-    res.status(201).json(something)
+router.post('/', resourceIsUnique, async (req, res) => {
+    const newResource = await rm.insert(req.body)
+    res.status(201).json(newResource)
 
 })
 
