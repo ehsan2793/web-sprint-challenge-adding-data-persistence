@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
 
         return project;
     })
-    console.log(projects)
     res.status(200).json(projects);
 })
 
