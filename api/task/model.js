@@ -8,14 +8,15 @@ const getAll = async () => {
 }
 
 const getById = async (id) => {
-    const project = await db('tasks')
-        .where({ project_id: id }).first();
-    return project;
+    const task = await db('tasks')
+        .where({ task_id: id }).first();
+    return task;
 };
 
 const insert = async (task) => {
     const [id] = await db('tasks').insert(task)
     return getById(id)
+
 }
 
 
