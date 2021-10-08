@@ -4,10 +4,10 @@ const projectName = async (req, res, next) => {
         if (project_name === undefined) {
             next({
                 status: 404,
-                message: 'Project name is required'
-            })
+                message: 'Project name is required',
+            });
         } else {
-            next()
+            next();
         }
     } catch (error) {
         next(error);

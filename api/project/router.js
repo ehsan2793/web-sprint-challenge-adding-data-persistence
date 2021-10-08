@@ -1,35 +1,25 @@
-
-const router = require('express').Router()
-const rp = require('./model')
+const router = require('express').Router();
+const rp = require('./model');
 const { projectName } = require('./projects-middleware');
+const { makeBolean } = require('../../helper/makeBoolean');
 
-
-router.get('/', async (req, res) => {
-    const allprojects = await rp.getAll()
-    const projects = allprojects.map(project => {
-        if (project.project_completed === 1) {
-            project.project_completed = true
-        } else {
-            project.project_completed = false
-        }
-
-        return project;
-    })
-    res.status(200).json(projects);
-})
+router.get('/', async (req, res, next) => {
+    try {
+        const allprojects = await rp.getAll();
+        const projects = allprojects.map((project) => {
+            makeBolean(project);
+            return project;
+        });
+        res.status(200).json(projects);
+    } catch (error) {
+        next(error);
+    }
+});
 
 router.post('/', projectName, async (req, res) => {
-    const newProject = await rp.insert(req.body)
-    if (newProject.project_completed === 1) {
-        newProject.project_completed = true
-    } else {
-        newProject.project_completed = false
-    }
-    res.status(201).json(newProject)
+    const newProject = await rp.insert(req.body);
+    makeBolean(newProject);
+    res.status(201).json(newProject);
+});
 
-})
-
-
-
-
-module.exports = router
+module.exports = router;
