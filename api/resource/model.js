@@ -6,7 +6,8 @@ const getAll = async () => {
 }
 
 const getById = async (id) => {
-    const resource = await db('resources').where({ resource_id: id }).first();
+    const resource = await db('resources')
+        .where({ resource_id: id }).first();
     return resource;
 };
 
@@ -15,6 +16,11 @@ const insert = async (resources) => {
     return getById(id)
 }
 
+const checkname = async (name) => {
+    const found = await db('resources')
+        .where('resource_name', 'like', `%${name}%`).first()
+    return found
+}
 
 // insert into resources
 // (resource_name,resource_description)
@@ -26,4 +32,5 @@ module.exports = {
     getAll,
     getById,
     insert,
+    checkname,
 }
