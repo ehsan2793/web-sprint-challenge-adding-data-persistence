@@ -110,6 +110,19 @@ Build an API inside the `api` folder with endpoints for:
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain the difference between Relational Databases and SQL.
+one of the type of databases is a Relational Database that uses column and rows. columns contain the column name, data type  where  rows contain the data or records
+sql  is the language to comunicate with databases and is the standerd language for relational databases.
+
 2. Why do tables need a Primary Key?
+
+primary keys are the way that we can identify each record in a table, with out primary key it becames deficalut to seperate records
+
 3. What is the name given to a table column that references the Primary Key on another table?
+
+Foreign keys
+
 4. What do we need in order to have a _many to many_ relationship between two tables?
+   
+   we need to normalize meaning we need to make another table so we can split the many to many relationship to one to many relationship
+   
+
